@@ -54,11 +54,9 @@ const questions = [
 
 var questionIterator = 0;
 nextQuestion(questionIterator);
-console.log(prevButton);
 prevButton.classList.add("hide");
 
 nextButton.addEventListener("click", () => {
-  console.log(`== clicked next with iterator at ${questionIterator}`);
   questionIterator++;
   // checkCorrect(questionIterator++);
   if (questionIterator < 3) {
@@ -113,7 +111,6 @@ ansContainer.addEventListener("click", (event) => {
     numCorrectAns++;
     question.ansChecked = true;
   }
-  console.log(`number correct is ${numCorrectAns}`);
 });
 
 submitButton.addEventListener("click", () => {
@@ -148,7 +145,6 @@ function checkCorrect(questionIterator) {
 
   if (radioAnswers[question.ans].checked) {
     numCorrectAns++;
-    console.log(`== ${numCorrectAns} correct`);
     question.ansChecked = true;
   } else if (question.ansCheck) {
     numCorrectAns--;
