@@ -6,32 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <title>Quiz App</title>
+    <script src="index.js" defer></script>
   </head>
-  <body>
-    <h2>CSS Quiz</h2>
-    <h3>Question <span id="questNum"></span> of 25</h3>
-    <p id="question">What is tis question?</p>
-    <div class="ans-container">
-      <div class="ans">
-        <input type="radio" name="ans-one" id="ans-one" />
-        <label for="ans-one">Question</label>
+  <body class="preload">
+    <div class="container">
+      <h2>CSS Quiz</h2>
+      <div class="question-card">
+        <h3>Question <span id="questNum"></span> of 25</h3>
+        <p id="question">What is tis question?</p>
+        <div class="ans-container">
+          <div class="ans">
+            <input type="radio" name="ans" id="a" />
+            <label id="ans-one" for="ans-one">Question</label>
+          </div>
+          <div class="ans">
+            <input type="radio" name="ans" id="b" />
+            <label id="ans-two" for="ans-two">Question</label>
+          </div>
+          <div class="ans">
+            <input type="radio" name="ans" id="c" />
+            <label id="ans-three" for="ans-three">Question</label>
+          </div>
+          <div class="ans">
+            <input type="radio" name="ans" id="d" />
+            <label id="ans-four" for="ans-four">Question</label>
+          </div>
+        </div>
       </div>
-      <div class="ans">
-        <input type="radio" name="ans-two" id="ans-two" />
-        <label for="ans-two">Question</label>
+      <div class="nav-container">
+        <div >< Prev</div>
+        <div class="nav-button">Next ></div>
+        <div class="nav-button">Submit</div>
       </div>
-      <div class="ans">
-        <input type="radio" name="ans-three" id="ans-three" />
-        <label for="ans-three">Question</label>
-      </div>
-      <div class="ans">
-        <input type="radio" name="ans-four" id="ans-four" />
-        <label for="ans-four">Question</label>
-      </div>
-    </div>
-    <div class="nav-container">
-      <div class="nav-button">< Prev</div>
-      <div class="nav-button">Next ></div>
     </div>
   </body>
 </html>
