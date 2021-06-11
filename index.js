@@ -56,7 +56,11 @@ var questionIterator = 0;
 nextQuestion(questionIterator);
 prevButton.classList.add("hide");
 
-nextButton.addEventListener("click", () => {
+nextButton.addEventListener("mousedown", () => {
+  nextButton.classList.add("nav-clicked");
+});
+
+nextButton.addEventListener("mouseup", () => {
   questionIterator++;
   // checkCorrect(questionIterator++);
   if (questionIterator < 3) {
@@ -65,6 +69,7 @@ nextButton.addEventListener("click", () => {
     questionIterator = 2;
   }
 
+  nextButton.classList.remove("nav-clicked");
   prevButton.classList.add("nav-button");
   prevButton.classList.remove("hide");
 
@@ -74,12 +79,15 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-prevButton.addEventListener("click", () => {
+prevButton.addEventListener("mousedown", () => {
+  prevButton.classList.add("nav-clicked");
+});
+
+prevButton.addEventListener("mouseup", () => {
   if (questionIterator > 0) {
     // checkCorrect(questionIterator);
     nextQuestion(--questionIterator);
   }
-
   nextButton.classList.add("nav-button");
   nextButton.classList.remove("hide");
 
@@ -87,6 +95,15 @@ prevButton.addEventListener("click", () => {
     prevButton.classList.remove("nav-button");
     prevButton.classList.add("hide");
   }
+  prevButton.classList.remove("nav-clicked");
+});
+
+prevButton.addEventListener("mouseleave", () => {
+  prevButton.classList.remove("nav-clicked");
+});
+
+nextButton.addEventListener("mouseleave", () => {
+  nextButton.classList.remove("nav-clicked");
 });
 
 ansContainer.addEventListener("click", (event) => {
@@ -113,8 +130,16 @@ ansContainer.addEventListener("click", (event) => {
   }
 });
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("mouseup", () => {
   alert(`You got ${numCorrectAns} questions correct out of 3`);
+});
+
+submitButton.addEventListener("mousedown", () => {
+  submitButton.classList.add("nav-clicked");
+});
+
+submitButton.addEventListener("mouseleave", () => {
+  submitButton.classList.remove("nav-clicked");
 });
 
 function nextQuestion(questionIterator) {
