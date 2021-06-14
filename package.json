@@ -7,7 +7,7 @@
     "test": "npm start",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "handlebars views/partials/questionCard.handlebars -f public/questionCardTemplate.js & handlebars views/results.handlebars -f public/resultsTemplate.js",
+    "build": "handlebars views/partials/questionCard.handlebars -f public/questionCardTemplate.js ",
     "predev": "npm run build",
     "prestart": "npm run build"
   },
