@@ -112,72 +112,75 @@
 
 //display only first question
 const questions = $(".question-card");
+// const ansRadio = {
+//   A: $(".a"),
+//   B: $(".b"),
+//   C: $(".c"),
+//   D: $(".d"),
+// };
+
+// const ansRadio = $(".ansRadio");
 const ansRadio = {
-  A: $(".a"),
-  B: $(".b"),
-  C: $(".c"),
-  D: $(".d"),
+  A: $(".ans:nth-child(1) > .ansRadio"),
+  B: $(".ans:nth-child(2) > .ansRadio"),
+  C: $(".ans:nth-child(3) > .ansRadio"),
+  D: $(".ans:nth-child(4) > .ansRadio"),
 };
 
+// console.log(ansRadio[0]);
+console.log("========");
+console.log(ansRadio);
 questions.first().removeClass("hidden");
 
 var questionIterator = 0;
 const numQuestions = questions.length;
 var userAnswers = {};
 
+// console.log($(".ans-container"));
 //record answers
-ansRadio["A"].on("click", () => (userAnswers[questionIterator] = "A"));
-ansRadio["B"].on("click", () => (userAnswers[questionIterator] = "B"));
-ansRadio["C"].on("click", () => (userAnswers[questionIterator] = "C"));
-ansRadio["D"].on("click", () => (userAnswers[questionIterator] = "D"));
+ansRadio["A"].on("click", () => (userAnswers[questionIterator] = "0"));
+ansRadio["B"].on("click", () => (userAnswers[questionIterator] = "1"));
+ansRadio["C"].on("click", () => (userAnswers[questionIterator] = "2"));
+ansRadio["D"].on("click", () => (userAnswers[questionIterator] = "3"));
 
 //go to next question
-$("#next")
-  .on("click", () => {
-    $("#prev").removeClass("hide-btn");
+$("#next").on("click", () => {
+  console.log(`current answers are:`);
+  console.log(userAnswers);
+  $("#prev").removeClass("hide-btn");
 
-    if (questionIterator === numQuestions - 1) {
-      $("#next").addClass("hide-btn");
+  if (questionIterator === numQuestions - 1) {
+    $("#next").addClass("hide-btn");
+  }
+  if (questionIterator < numQuestions - 1) {
+    questions[questionIterator].classList.add("hidden");
+    questionIterator++;
+    questions[questionIterator].classList.remove("hidden");
+    if (userAnswers[questionIterator]) {
+      ansRadio[userAnswers[questionIterator]]
+        .eq(questionIterator)
+        .prop("checked", true);
     }
-    if (questionIterator < numQuestions - 1) {
-      questions[questionIterator].classList.add("hidden");
-      questionIterator++;
-      questions[questionIterator].classList.remove("hidden");
-      if (userAnswers[questionIterator]) {
-        ansRadio[userAnswers[questionIterator]]
-          .eq(questionIterator)
-          .prop("checked", true);
-      }
-    }
-  })
-  .on("mousedown", () => $("#next").addClass("nav-clicked"))
-  .on("mouseup", () => {
-    $("#next").removeClass("nav-clicked");
-    console.log("mouse left");
-  });
+  }
+});
 
-$("#prev")
-  .on("click", () => {
-    $("#next").removeClass("hide-btn");
+$("#prev").on("click", () => {
+  $("#next").removeClass("hide-btn");
 
-    if (questionIterator === 0) {
-      $("#prev").addClass("hide-btn");
+  if (questionIterator === 0) {
+    $("#prev").addClass("hide-btn");
+  }
+  if (questionIterator > 0) {
+    questions[questionIterator].classList.add("hidden");
+    questionIterator--;
+    questions[questionIterator].classList.remove("hidden");
+    if (userAnswers[questionIterator]) {
+      ansRadio[userAnswers[questionIterator]]
+        .eq(questionIterator)
+        .prop("checked", true);
     }
-    if (questionIterator > 0) {
-      questions[questionIterator].classList.add("hidden");
-      questionIterator--;
-      questions[questionIterator].classList.remove("hidden");
-      if (userAnswers[questionIterator]) {
-        ansRadio[userAnswers[questionIterator]]
-          .eq(questionIterator)
-          .prop("checked", true);
-      }
-    }
-  })
-  .on("mousedown", () => $("#prev").addClass("nav-clicked"))
-  .on("mouseup", () => {
-    $("#prev").removeClass("nav-clicked");
-  });
+  }
+});
 
 $("#submit").on("click", async () => {
   try {
@@ -208,3 +211,8 @@ $("#submit").on("click", async () => {
     console.log(`error caught: ${err}`);
   }
 });
+
+$(".nav-button")
+  .on("mousedown", (event) => event.target.classList.add("nav-clicked"))
+  .on("mouseup", (event) => event.target.classList.remove("nav-clicked"))
+  .on("mouseleave", (event) => event.target.classList.remove("nav-clicked"));
