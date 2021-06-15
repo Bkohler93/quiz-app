@@ -9,9 +9,6 @@ const ansRadio = {
   3: $(".ans:nth-child(4) > .ansRadio"),
 };
 
-// console.log(ansRadio[0]);
-console.log("========");
-console.log(ansRadio);
 questions.first().removeClass("hidden");
 
 var questionIterator = 0;
