@@ -3,3 +3,7 @@ $("#to-quiz-btn").on("click", () => {
 
   window.location.href = `/quiz?id=${quizId}`;
 });
+
+$("#make-quiz-btn").on("click", () => {
+  window.location.href = `/create`;
+});

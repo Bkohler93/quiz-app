@@ -61,6 +61,11 @@ app.get("/quiz", async (req, res, next) => {
   }
 });
 
+app.get("/create", (req, res) => {
+  console.log("== user attempting to create page");
+  res.status(200).render("createQuizPage");
+});
+
 app.post("/submit", async (req, res) => {
   console.log("== received submission from user");
   try {

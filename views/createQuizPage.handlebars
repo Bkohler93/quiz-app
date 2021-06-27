@@ -1,12 +1,18 @@
 <h2>Let's create your quiz</h2>
-<form action="/submitQuiz" method="post">
-	<label for="title">Quiz name:</label>
-	<input type="text" id="title" name="title">
-	<label for="fname">Your first name:</label>
-	<input type="text" id="fname" name="fname">
 
-	<label for="lname">Your last name:</label>
-	<input type="text" id="lname" name="lname">
+<section class="quiz-content-ctr">
+  <div class="content-input">
+    <h4>Quiz Name:</h4>
+    <input type="text" id="quiz-name" />
+  </div>
+  <div class="content-input">
+    <h4>Your first name:</h4>
+    <input type="text" id="first-name" />
+  </div>
+  <div class="content-input">
+    <h4>Your last name:</h4>
+    <input type="text" id="last-name" />
+  </div>
 
-	
-</form>
+  <button id="add-quest-btn">Add question</button>
+</section>
